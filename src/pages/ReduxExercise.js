@@ -99,6 +99,7 @@ const ProductOne = (props) => {
   // Replace the line below to get data of the first product from state.product
   // You should see the price is updated
   const product = useSelector((state) => state.product[0]);
+  console.log("product ", product);
 
   // Step 7
   // Define: const dispatch = useDispatch();
@@ -143,10 +144,18 @@ const ProductOne = (props) => {
         </Grid>
         <Grid item xs={8}>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <Button variant="success" sx={{ width: "5rem" }}>
+            <Button
+              variant="success"
+              sx={{ width: "5rem" }}
+              onClick={addProduct}
+            >
               Add
             </Button>
-            <Button variant="error" sx={{ width: "5rem" }}>
+            <Button
+              variant="error"
+              sx={{ width: "5rem" }}
+              onClick={removeProduct}
+            >
               Remove
             </Button>
           </div>
@@ -196,10 +205,18 @@ const ProductTwo = (props) => {
         </Grid>
         <Grid item xs={8}>
           <div style={{ display: "flex", justifyContent: "space-around" }}>
-            <Button variant="success" sx={{ width: "5rem" }}>
+            <Button
+              variant="success"
+              sx={{ width: "5rem" }}
+              onClick={addProduct}
+            >
               Add
             </Button>
-            <Button variant="error" sx={{ width: "5rem" }}>
+            <Button
+              variant="error"
+              sx={{ width: "5rem" }}
+              onClick={removeProduct}
+            >
               Remove
             </Button>
           </div>
@@ -280,7 +297,7 @@ const Store = (props) => {
   // use useSelector() to get the data of products and cart in the store
   // pass {cart, product} to the src attribute of the component <ReactJson/>
 
-  const products = useSelector((state) => state.product);
+  const product = useSelector((state) => state.product);
   const cart = useSelector((state) => state.cart);
 
   return (
@@ -295,7 +312,7 @@ const Store = (props) => {
       <Box sx={{ textAlign: "start" }}>
         <ReactJson
           name="store"
-          src={{}}
+          src={{ cart, product }}
           theme="monokai"
           displayDataTypes={false}
           displayObjectSize={false}
